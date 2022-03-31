@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <title>Products Management</title>
+</head>
+<body>
+<h1>Products</h1>
+
+    <h2>Add Product</h2>
+    <form method=post action="/add-product">
+        Name: <input type=text name=product_name required="required">
+        Quantity: <input type=number name=product_quantity required="required">
+        <input type=submit name=submit>
+    </form>
+    <br><br>
+    <table>
+        <thread>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Quantity</td>
+        </thread>
+        {% for product in products %}
+        <tr>
+            <td>{{product[0]}}</td>
+            <td>{{product[1]}}</td>
+            <td>{{product[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    {% if session['admin'] %}
+        <a href="/users">Users</a>
+        <br><br>
+    {% endif %}
+    <a href="/logout">Logout</a>
+
+
+</body>
+</html>

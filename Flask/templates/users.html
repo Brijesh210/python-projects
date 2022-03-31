@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <h2>Add User</h2>
+    <form method=post action="/add-user">
+        Username: <input type=text name=username required="required">
+        Password: <input type=password name=password required="required">
+        <br>
+        <input type=submit>
+        <input type=checkbox name=admin>Make admin
+        <br>
+    </form>
+    <br><br>
+    <h2>Users</h2>
+    <table>
+        <thread>
+            <td>Username</td>
+            <td>Password</td>
+            <td>IsAdmin</td>
+
+        </thread>
+        {% for user in users %}
+        <tr>
+            <td><a href="/user/{{user[0]}}">{{user[0]}}</a></td>
+            <td>{{user[1]}}</td>
+            <td>{{user[2]}}</td>
+            <td><a href="/delete?username={{user[0]}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Main Page</a>
+
+</body>
+</html>
